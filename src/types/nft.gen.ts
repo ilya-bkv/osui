@@ -5,7 +5,7 @@ export interface Nft {
   description?: string
   tokenUri: TokenUri
   media: Medum[]
-  metadata?: Metadata
+  metadata: Metadata
   timeLastUpdated?: string
   contractMetadata?: ContractMetadata
 }

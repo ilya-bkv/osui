@@ -42,8 +42,8 @@ const List: React.FC = () => {
       <Row gutter={[16, 16]}>
       {nfts.map((item) => (
         <Col span={columnsGrid ?? 8} key={item.id.tokenId}>
-          {/*// @ts-ignore*/}
-          {item.metadata?.attributes[1].value}
+          {/*@ts-ignore TODO: manage types*/}
+          {item.metadata.attributes[1].value}
           <Card
             hoverable
             className="nft-card"

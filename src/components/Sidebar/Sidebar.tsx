@@ -2,6 +2,9 @@ import React from 'react'
 import { Checkbox, Layout, Menu } from 'antd';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
 import './Sidebar.less'
+import { useAppSelector } from '../../hooks/redux';
+import { setSideBarOpen } from '../../store/uiStateSlice';
+import { useDispatch } from 'react-redux';
 
 const {Sider} = Layout;
 
@@ -25,11 +28,15 @@ const items = [
 ];
 
 const Sidebar: React.FC = () => {
+  const {sideBarOpen} = useAppSelector((state) => state.ui)
+
   return (
     <Sider
       className="Sidebar"
-      breakpoint="md"
+      trigger={null}
+      collapsedWidth={0}
       collapsible
+      collapsed={sideBarOpen}
     >
       <Menu
         mode="inline"
