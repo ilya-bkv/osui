@@ -1,0 +1,30 @@
+@import '~antd/es/style/themes/default.less';
+@import '~antd/dist/antd.less';
+
+@background-color-light: #fff;
+@background-color-base: #fff; // Default grey background color
+@border-radius-base: 14px;
+@border-color-base: rgb(229, 232, 235);
+@border-width-base: 2px;
+@primary-color: #04111d;
+@primary-color-hover: #000;
+
+/*
+@primary-color-active: color(~`colorPalette('@{primary-color}', 7) `);
+@primary-color-outline: fade(@primary-color, @outline-fade);
+*/
+
+.wrapper {
+  min-height: 100vh;
+}
+// ANT overrides
+.ant-radio-group {
+  @border-radius: 10px;
+  .ant-radio-button-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: unset;
+    line-height: unset;
+  }
+}

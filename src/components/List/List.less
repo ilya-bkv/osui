@@ -1,0 +1,29 @@
+.List {
+  width: 100%;
+
+  .nft-card {
+    box-shadow: rgb(0 0 0 / 8%) 0 4px 15px;
+    border-radius: 10px;
+    padding-top: 0;
+    border: unset;
+
+    > .ant-card-cover {
+      margin: 0 10px 0 10px;
+      overflow: hidden;
+      border-radius: 0 0 10px 10px;
+      > img {
+        border-radius: 0 0 10px 10px;
+        transition: all .65s ease-in-out;
+      }
+    }
+    &:hover {
+      box-shadow: rgb(0 0 0 / 15%) 0 6px 25px;
+      > .ant-card-cover img {
+        transform: scale(1.2);
+      }
+    }
+    .ant-card-meta-detail > div:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+}

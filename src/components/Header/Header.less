@@ -1,0 +1,33 @@
+.Header {
+  background: #fff;
+  .ant-layout-header{
+    //color: #000;
+    //background: #fff;
+    //padding: 20px;
+  }
+  .ant-radio-group {
+    > .ant-radio-button-wrapper {
+      border-color: rgb(229, 232, 235);
+      height: 42px;
+      color: rgb(112, 122, 131);
+
+      &:hover {
+        transition: all 0.2s ease 0s;
+        box-shadow: rgb(0 0 0 / 10%) 0 2px 10px;
+      }
+
+      &-checked {
+        background: rgba(229, 232, 235, 0.2);
+        color: #04111d;
+        border-color: rgb(229, 232, 235) !important;
+        box-shadow: unset;
+        &::before {
+          background-color: unset;
+        }
+
+      }
+      //.ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper:first-child
+    }
+  }
+
+}
