@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import uiStateSlice from './uiStateSlice'
+import commonStateSlice from './commonStateSlice'
 
 const store = configureStore ({
   reducer: {
-    ui: uiStateSlice,
+    common: commonStateSlice,
   }
 })
 

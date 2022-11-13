@@ -40,7 +40,12 @@ export interface Metadata {
   name: string
   description: string
   image: string
-  attributes: []
+  attributes: Attribute[]
+}
+
+export interface Attribute {
+  trait_type: string,
+  value: string | number
 }
 
 export interface ContractMetadata {

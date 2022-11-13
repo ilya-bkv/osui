@@ -1,6 +1,17 @@
 .List {
   width: 100%;
+  .update {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
 
+    > .action {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
   .nft-card {
     box-shadow: rgb(0 0 0 / 8%) 0 4px 15px;
     border-radius: 10px;
@@ -11,7 +22,9 @@
       margin: 0 10px 0 10px;
       overflow: hidden;
       border-radius: 0 0 10px 10px;
+      > div,
       > img {
+        width: 100%;
         border-radius: 0 0 10px 10px;
         transition: all .65s ease-in-out;
       }

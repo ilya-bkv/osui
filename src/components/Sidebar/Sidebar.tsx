@@ -1,49 +1,61 @@
 import React from 'react'
 import { Checkbox, Layout, Menu } from 'antd';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
-import './Sidebar.less'
 import { useAppSelector } from '../../hooks/redux';
-import { setSideBarOpen } from '../../store/uiStateSlice';
+import './Sidebar.less'
 import { useDispatch } from 'react-redux';
+import { setFilters } from '../../store/commonStateSlice';
 
 const {Sider} = Layout;
 
-const onChange = (e: CheckboxChangeEvent) => {
-  console.log(`checked = ${e.target.checked}`);
-};
-
-const items = [
-  {
-    label: 'Status', key: crypto.randomUUID(),
-    children:
-      [
-        {label: <Checkbox onChange={onChange}>Buy Now</Checkbox>, key: crypto.randomUUID()},
-        {label: <Checkbox>On Auction</Checkbox>, key: crypto.randomUUID()},
-      ]
-  },
-  {label: 'Price', key: crypto.randomUUID(), children: [{label: 'Inner', key: crypto.randomUUID()}]},
-  {label: 'Quantity', key: crypto.randomUUID(), children: [{label: 'Inner', key: crypto.randomUUID()}]},
-  {label: 'Collections', key: crypto.randomUUID(), children: [{label: 'Inner', key: crypto.randomUUID()}]},
-  {label: 'Chains', key: crypto.randomUUID(), children: [{label: 'Inner', key: crypto.randomUUID()}]},
-];
-
 const Sidebar: React.FC = () => {
-  const {sideBarOpen} = useAppSelector((state) => state.ui)
+  const dispatch = useDispatch()
+  const {sideBarOpen, filters} = useAppSelector((state) => state.common)
 
+  const onChange = React.useCallback((event: CheckboxChangeEvent) => {
+    dispatch(setFilters({[`${event.target.name}`]: event.target.checked}))
+  }, [dispatch])
+
+  const items = [
+    {
+      label: 'Status', key: 1,
+      children:
+        [
+          {
+            mode: 'inline',
+            label: <Checkbox
+              onChange={onChange}
+              checked={filters['Human']}
+              name="Human">Species: Human</Checkbox>
+          },
+          {
+            mode: 'inline',
+            label:
+              <Checkbox onChange={onChange}
+                        checked={filters['Hacker']}
+                        name="Hacker">
+                Talent: Hacker</Checkbox>
+          },
+        ]
+    },
+    {label: 'Price', key: crypto.randomUUID(), children: [{label: 'Inner', key: 2}]},
+    {label: 'Quantity', key: crypto.randomUUID(), children: [{label: 'Inner', key: 3}]},
+    {label: 'Collections', key: crypto.randomUUID(), children: [{label: 'Inner', key: 4}]},
+    {label: 'Chains', key: crypto.randomUUID(), children: [{label: 'Inner', key: 5}]},
+  ];
   return (
     <Sider
       className="Sidebar"
       trigger={null}
       collapsedWidth={0}
       collapsible
-      collapsed={sideBarOpen}
+      collapsed={!sideBarOpen}
     >
       <Menu
         mode="inline"
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        style={{height: '100%', borderRight: 0}}
         items={items}
+        defaultOpenKeys={['1']}
+        style={{height: '100%', borderRight: 0}}
       />
     </Sider>
   )
