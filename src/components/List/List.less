@@ -19,15 +19,18 @@
     border: unset;
 
     > .ant-card-cover {
-      margin: 0 10px 0 10px;
+      margin: 0;
       overflow: hidden;
-      border-radius: 0 0 10px 10px;
+      border-radius: 10px 10px 0 0;
       > div,
       > img {
         width: 100%;
-        border-radius: 0 0 10px 10px;
+        border-radius: 10px 10px 0 0;
         transition: all .65s ease-in-out;
       }
+    }
+    > .ant-card-body {
+      padding: 12px;
     }
     &:hover {
       box-shadow: rgb(0 0 0 / 15%) 0 6px 25px;

@@ -1,13 +1,13 @@
 import React from 'react'
 import axios from 'axios';
 import { Nft } from '../../types/nft.gen';
-import { Button, Card, Typography, Row, Col, Skeleton, Space } from 'antd';
+import { Button, Card, Typography, Row, Col, Skeleton } from 'antd';
 import notFoundImg from '../../assets/img404.webp'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setFilters, setNftList } from '../../store/commonStateSlice';
+import { setNftList } from '../../store/commonStateSlice';
 import { ReactComponent as Refresh } from '../../assets/icons/refresh.svg';
+import TimeAgo from 'react-timeago'
 import './List.less'
-import { ReactComponent as Dropdown } from '../../assets/icons/dd.svg';
 
 const API_KEY = 'ia9jmNMBVFbOjJt0UZhx6UcKJPUK8o7w'
 const QUERY_METHOD = 'getNFTsForCollection'
@@ -22,11 +22,13 @@ const List: React.FC = () => {
   const {columnsGrid, filters, nftList} = useAppSelector((state) => state.common)
   const [filteredNfts, setFilteredNfts] = React.useState<Nft[]>([])
   const [loading, setLoading] = React.useState<boolean>(false)
+  const [lastUpdateTime, setLastUpdateTime] = React.useState<Date | undefined>(undefined)
+
   const imageOnErrorHandler = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
     event.currentTarget.src = notFoundImg;
   }
 
-  const get = async () => {
+  const get = async (initial?: boolean) => {
     setLoading(true)
     await axios.get(BASE_URL, {
       params: {
@@ -39,7 +41,9 @@ const List: React.FC = () => {
       .then((response) => {
         setLoading(false)
         dispatch(setNftList(response.data.nfts))
-        // setFilteredNfts(response.data.nfts)
+        if (initial) setFilteredNfts(response.data.nfts)
+        const currentTime = new Date()
+        setLastUpdateTime(currentTime)
         console.log('NFT List:', response)
       })
       .catch((error) => {
@@ -49,21 +53,14 @@ const List: React.FC = () => {
       });
   }
 
-  React.useEffect(() => {
-    get().then(()=> setFilteredNfts(nftList))
-  }, [])
-
   const handleRefresh = React.useCallback(() => {
     setLoading(true)
-    get().then(() => {
+    get(false).then(() => {
       if (Object.keys(filters).length > 0) {
-        // do nothibg
-        console.log('!!! ssss:')
       } else {
         setFilteredNfts(nftList)
         console.log('!!! nftList:', nftList)
       }
-
       setLoading(false)
     })
   }, [get, loading])
@@ -78,15 +75,21 @@ const List: React.FC = () => {
     }
   }, [filters])
 
+  React.useEffect(() => {
+    get( true)
+    return
+  }, [])
   return (
     <div className="List">
       {filteredNfts.length > 1 && (
         <Row className="update">
           <div className="action">
             <Button type="ghost" disabled={loading} icon={<Refresh/>} size="large" onClick={handleRefresh} className="icon-button"/>
-            <Typography.Title level={5} type="secondary" style={{margin: 0}}>{loading ? 'Loading items...' : 'Countdown'}</Typography.Title>
+            <Typography.Title level={5} type="secondary" style={{margin: 0}}>
+              {loading ? 'Loading items...' : <TimeAgo date={lastUpdateTime as Date}/> }
+            </Typography.Title>
           </div>
-          {!loading && <Typography.Title level={5}>{filteredNfts.length} items</Typography.Title>}
+          {!loading && <Typography.Title level={5} style={{margin: 0}}>{filteredNfts.length} items</Typography.Title>}
         </Row>
       )}
       <Row gutter={[16, 16]}>
@@ -131,7 +134,7 @@ const List: React.FC = () => {
           </Col>
         ))}
       </Row>
-      <Button type="primary" onClick={get}>Test</Button>
+      {/*<Button type="primary" onClick={get}>Test</Button>*/}
     </div>
   )
 }

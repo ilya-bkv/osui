@@ -38,10 +38,10 @@ const Sidebar: React.FC = () => {
           },
         ]
     },
-    {label: 'Price', key: crypto.randomUUID(), children: [{label: 'Inner', key: 2}]},
-    {label: 'Quantity', key: crypto.randomUUID(), children: [{label: 'Inner', key: 3}]},
-    {label: 'Collections', key: crypto.randomUUID(), children: [{label: 'Inner', key: 4}]},
-    {label: 'Chains', key: crypto.randomUUID(), children: [{label: 'Inner', key: 5}]},
+    {label: 'Price', key: crypto.randomUUID()},
+    {label: 'Quantity', key: crypto.randomUUID()},
+    {label: 'Collections', key: crypto.randomUUID()},
+    {label: 'Chains', key: crypto.randomUUID()},
   ];
   return (
     <Sider
