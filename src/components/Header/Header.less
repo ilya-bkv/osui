@@ -1,0 +1,57 @@
+.Header {
+  background: #fff;
+  .top-panel {
+    padding: 20px;
+    border-bottom: 1px solid rgb(229, 232, 235);
+    position: sticky;
+    .logo {
+      .ant-typography {
+        margin: 0;
+      }
+    }
+  }
+
+  .bottom-panel {
+    padding: 20px;
+    > .ant-col {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .ant-layout-header{
+    //color: #000;
+    //background: #fff;
+    //padding: 20px;
+  }
+  .ant-radio-group {
+    > .ant-radio-button-wrapper {
+      border-color: rgb(229, 232, 235);
+      height: 42px;
+      color: rgb(112, 122, 131);
+
+      > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:hover {
+        transition: all 0.2s ease 0s;
+        box-shadow: rgb(0 0 0 / 10%) 0 2px 10px;
+      }
+
+      &-checked {
+        background: rgba(229, 232, 235, 0.2);
+        color: #04111d;
+        border-color: rgb(229, 232, 235) !important;
+        box-shadow: unset;
+        &::before {
+          background-color: unset;
+        }
+
+      }
+    }
+  }
+}

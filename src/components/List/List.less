@@ -1,0 +1,45 @@
+.List {
+  width: 100%;
+  .update {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    > .action {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+  .nft-card {
+    box-shadow: rgb(0 0 0 / 8%) 0 4px 15px;
+    border-radius: 10px;
+    padding-top: 0;
+    border: unset;
+
+    > .ant-card-cover {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      > div,
+      > img {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+        transition: all .65s ease-in-out;
+      }
+    }
+    > .ant-card-body {
+      padding: 12px;
+    }
+    &:hover {
+      box-shadow: rgb(0 0 0 / 15%) 0 6px 25px;
+      > .ant-card-cover img {
+        transform: scale(1.2);
+      }
+    }
+    .ant-card-meta-detail > div:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+}
