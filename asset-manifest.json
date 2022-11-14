@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/osui/static/css/main.0ca8077c.css",
+    "main.js": "/osui/static/js/main.9f8dc086.js",
+    "static/media/img404.webp": "/osui/static/media/img404.4e00d1238f5a80009348.webp",
+    "index.html": "/osui/index.html",
+    "static/media/grid.svg": "/osui/static/media/grid.8d2694cee952c5efe2fa78802b2bed87.svg",
+    "static/media/refresh.svg": "/osui/static/media/refresh.21bb5116bfdf1a380d5a4e54a549c29c.svg",
+    "static/media/grid-small.svg": "/osui/static/media/grid-small.f0fc8e6f77db34e1f7087121a41b6ae8.svg",
+    "static/media/dd.svg": "/osui/static/media/dd.c021e1c8cd0c97b1df7e02ad9c7aa6fd.svg",
+    "main.0ca8077c.css.map": "/osui/static/css/main.0ca8077c.css.map",
+    "main.9f8dc086.js.map": "/osui/static/js/main.9f8dc086.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0ca8077c.css",
+    "static/js/main.9f8dc086.js"
+  ]
+}
